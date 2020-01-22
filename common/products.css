@@ -5,6 +5,9 @@ li.pet-listing {
     list-style-type: none;
     border: 1px solid #ccc;
     width: 300px;
+    display:inline-block;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
 }
 
 .pet-listing .text-container { 
