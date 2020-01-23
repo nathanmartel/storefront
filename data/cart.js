@@ -1,14 +1,12 @@
-const petsInCart = [{
+export const petsInCart = [{
     id : 'goldfish',
     qty : 3,
 },
 {
-    id : 'ant-farm',
+    id : 'antFarm',
     qty: 1,
 },
 {
     id : 'gecko',
     qty: 4,
 }];
-
-export default petsInCart;
