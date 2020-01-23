@@ -5,6 +5,7 @@ import { lesserPets } from '../data/lesserPets.js';
 import { buildPetLi } from '../src/builtPetLi.js';
 import { findById } from '../src/utils.js';
 import { calcLineItem } from '../src/utils.js';
+import { calcOrderTotal } from '../src/utils.js';
 import { renderLineItem } from '../src/renderLineItem.js';
 
 const test = QUnit.test;
@@ -50,5 +51,47 @@ test('Does renderLineItem output properly? ', function(assert) {
     const myOrder = { id : 'goldfish', qty: 3 };
     const actualResult = renderLineItem(myOrder, lesserPets).outerHTML;
     const expectedResult = `<tr><td class="left">Goldfish</td><td>3</td><td>$5.00</td><td>$15.00</td></tr>`;
+    assert.equal(expectedResult, actualResult);
+});
+
+test('Does calcOrderTotal add up properly? ', function(assert) {
+    const myOrder = [{ 
+        id : 'goldfish',
+        qty : 3,
+        // price in lesserPets is $5
+    },
+    {
+        id : 'hermitCrab',
+        qty: 1,
+        // price in lesserPets is $8
+    },
+    {
+        id : 'gecko',
+        qty: 4,
+        // price in lesserPets is $45
+    }];
+    const actualResult = calcOrderTotal(myOrder, lesserPets);
+    const expectedResult = 203;
+    assert.equal(expectedResult, actualResult);
+});
+
+test('Does calcOrderTotal add up properly with decimals? ', function(assert) {
+    const myOrder = [{ 
+        id : 'goldfish',
+        qty : 3,
+        // price in lesserPets is $5
+    },
+    {
+        id : 'antFarm',
+        qty: 1,
+        // price in lesserPets is $27.50
+    },
+    {
+        id : 'gecko',
+        qty: 4,
+        // price in lesserPets is $45
+    }];
+    const actualResult = calcOrderTotal(myOrder, lesserPets);
+    const expectedResult = 222.5;
     assert.equal(expectedResult, actualResult);
 });
