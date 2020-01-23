@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import lesserPets from '../src/lesser-pets.js';
+import lesserPets from '../data/lesserPets.js';
 import buildPetLi from '../src/builtPetLi.js';
 
 const test = QUnit.test;

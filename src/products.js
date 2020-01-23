@@ -1,13 +1,11 @@
-import lesserPets from './lesser-pets.js';
-import buildPetLi from './builtPetLi.js';
+import { lesserPets } from '../data/lesserPets.js';
+import { buildPetLi } from './builtPetLi.js';
 
 // Run on load
-const PetUl = document.getElementById('store-content');
+const petUl = document.getElementById('store-content');
 
 for (let i = 0; i < lesserPets.length; i++) {
-    let singlePet = lesserPets[i];
-    let PetLi = buildPetLi(singlePet);
-    PetUl.appendChild(PetLi);
+    const singlePet = lesserPets[i];
+    const petLi = buildPetLi(singlePet);
+    petUl.appendChild(petLi);
 }
-
-export { buildPetLi as default };
