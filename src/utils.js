@@ -4,6 +4,10 @@ const findById = (someId, someArray) => {
     });
 };
 
-const calcLineItem = (amount, quantity) => amount * quantity;
+const calcLineItem = (price, quantity) => {
+    let sum = price * quantity;
+    sum = Math.round(sum * 100) / 100;
+    return sum;
+};
 
 export { findById, calcLineItem };

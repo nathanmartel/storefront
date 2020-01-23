@@ -1,7 +1,11 @@
+// Import data
 import { lesserPets } from '../data/lesserPets.js';
+
+// Import functions
 import { buildPetLi } from '../src/builtPetLi.js';
 import { findById } from '../src/utils.js';
 import { calcLineItem } from '../src/utils.js';
+import { renderLineItem } from '../src/renderLineItem.js';
 
 const test = QUnit.test;
 
@@ -33,5 +37,18 @@ test('Does calcLineItem multiply properly? ', function(assert) {
 test('Does calcLineItem multiply properly if negative? ', function(assert) {
     const actualResult = calcLineItem(-3, 3);
     const expectedResult = -9;
+    assert.equal(expectedResult, actualResult);
+});
+
+test('Does calcLineItem round properly if a long result is produced? ', function(assert) {
+    const actualResult = calcLineItem(5.123, 3.987);
+    const expectedResult = 20.43;
+    assert.equal(expectedResult, actualResult);
+});
+
+test('Does renderLineItem output properly? ', function(assert) {
+    const myOrder = { id : 'goldfish', qty: 3 };
+    const actualResult = renderLineItem(myOrder, lesserPets).outerHTML;
+    const expectedResult = `<tr><td class="left">Goldfish</td><td>3</td><td>$5.00</td><td>$15.00</td></tr>`;
     assert.equal(expectedResult, actualResult);
 });
