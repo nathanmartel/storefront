@@ -1,43 +1,82 @@
+import { findById } from './utils.js';
+
 export function buildPetLi(thisPet) {
-    const PetLi = document.createElement('li');
-    PetLi.classList.add('pet-listing');
+    const petLi = document.createElement('li');
+    petLi.classList.add('pet-listing');
 
-    const PetLiImgDiv = document.createElement('div');
-    PetLiImgDiv.classList.add('image-container');
-    const PetLiImg = document.createElement('img');
-    PetLiImg.src = '../assets/' + thisPet.image;
-    PetLiImg.alt = `A ${thisPet.name} photo`;
-    PetLiImgDiv.appendChild(PetLiImg);
-    PetLi.appendChild(PetLiImgDiv);
+    const petLiImgDiv = document.createElement('div');
+    petLiImgDiv.classList.add('image-container');
+    const petLiImg = document.createElement('img');
+    petLiImg.src = '../assets/' + thisPet.image;
+    petLiImg.alt = `A ${thisPet.name} photo`;
+    petLiImgDiv.appendChild(petLiImg);
+    petLi.appendChild(petLiImgDiv);
 
-    const PetLiDiv = document.createElement('div');
-    PetLiDiv.classList.add('text-container');
+    const petLiDiv = document.createElement('div');
+    petLiDiv.classList.add('text-container');
     
-    const PetLiName = document.createElement('h3');
-    PetLiName.textContent = thisPet.name;
-    PetLiDiv.appendChild(PetLiName);
+    const petLiName = document.createElement('h3');
+    petLiName.textContent = thisPet.name;
+    petLiDiv.appendChild(petLiName);
     
-    const PetLiDescription = document.createElement('p');
-    PetLiDescription.classList.add('description');
-    PetLiDescription.textContent = thisPet.description;
-    PetLiDiv.appendChild(PetLiDescription);
+    const petLiDescription = document.createElement('p');
+    petLiDescription.classList.add('description');
+    petLiDescription.textContent = thisPet.description;
+    petLiDiv.appendChild(petLiDescription);
 
-    const PetLiCategory = document.createElement('p');
-    PetLiCategory.classList.add('category');
-    PetLiCategory.textContent = thisPet.category;
-    PetLiDiv.appendChild(PetLiCategory);
+    const petLiCategory = document.createElement('p');
+    petLiCategory.classList.add('category');
+    petLiCategory.textContent = thisPet.category;
+    petLiDiv.appendChild(petLiCategory);
 
-    const PetLiPrice = document.createElement('p');
-    PetLiPrice.classList.add('price');
-    PetLiPrice.textContent = `$${thisPet.price.toFixed(2)}`;
-    PetLiDiv.appendChild(PetLiPrice);
+    const petLiPrice = document.createElement('p');
+    petLiPrice.classList.add('price');
+    petLiPrice.textContent = `$${thisPet.price.toFixed(2)}`;
+    petLiDiv.appendChild(petLiPrice);
 
-    const PetLiButton = document.createElement('button');
-    PetLiButton.value = thisPet.id;
-    PetLiButton.textContent = 'Add';
-    PetLiDiv.appendChild(PetLiButton);
+    const petLiButton = document.createElement('button');
+    petLiButton.value = thisPet.id;
+    petLiButton.textContent = 'Add';
+    petLiButton.addEventListener('click', () => {
+        const petId = thisPet.id;
+        console.log(`Adding ${petId} to cart`);
+        const myCart = fetchCart();
+        const myNewOrder = findById(petId, myCart);
+        if (myNewOrder) {
+            myNewOrder.qty += 1;
+            saveCart(myCart);
+        } else {
+            const newPetInCart = {
+                id : petId,
+                qty : 1
+            };
+            myCart.push(newPetInCart);
+            saveCart(myCart);
+        }
+    });
+    petLiDiv.appendChild(petLiButton);
 
-    PetLi.appendChild(PetLiDiv);
+    petLi.appendChild(petLiDiv);
 
-    return PetLi;
+    return petLi;
 }
+
+function fetchCart() {
+    const myCart = localStorage.getItem('cart');
+    if (!myCart) {
+        const myEmptyCart = [];
+        return myEmptyCart;
+    } else {
+        const myCartWithStuff = JSON.parse(myCart);
+        return myCartWithStuff;
+    }
+}
+
+function saveCart(myCart) {
+    const myCartString = JSON.stringify(myCart);
+    localStorage.setItem('cart', myCartString);
+    console.log(localStorage);
+}
+
+function addToCart(petId) {
+} 

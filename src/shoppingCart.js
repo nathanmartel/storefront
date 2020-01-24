@@ -14,3 +14,4 @@ petsInCart.forEach((thisPet) => {
 let rawOrderTotal = calcOrderTotal(petsInCart, lesserPets);
 rawOrderTotal = Math.round(rawOrderTotal * 100) / 100;
 cartTotal.textContent = `$${rawOrderTotal.toFixed(2)}`;
+
