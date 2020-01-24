@@ -44,7 +44,7 @@ function purchaseAlert() {
     const myCart = getCart();
     alert(JSON.stringify(myCart, true, 2));
     clearCart();
-    window.location.href = "/";
+    window.location.href = '/';
 }
 
 
