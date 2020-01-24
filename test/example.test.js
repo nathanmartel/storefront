@@ -2,7 +2,7 @@
 import { lesserPets } from '../data/lesserPets.js';
 
 // Import functions
-import { buildPetLi } from '../src/builtPetLi.js';
+import { buildPetLi } from '../src/buildPetLi.js/index.js';
 import { findById } from '../src/utils.js';
 import { calcLineItem } from '../src/utils.js';
 import { calcOrderTotal } from '../src/utils.js';

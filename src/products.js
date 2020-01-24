@@ -1,5 +1,5 @@
 import { lesserPets } from '../data/lesserPets.js';
-import { buildPetLi } from './builtPetLi.js';
+import { buildPetLi } from './buildPetLi.js';
 
 // Run on load
 const petUl = document.getElementById('store-content');

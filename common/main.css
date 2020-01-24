@@ -27,12 +27,12 @@ nav li {
     font-size: 1.25rem;
 }
 
-nav li a {
+header a {
     color: #eee;
     text-decoration: none;
 }
 
-nav li a:hover {
+header a:hover {
     color: white;
     text-decoration: underline;
 }
@@ -59,3 +59,13 @@ h2.splash {
     text-align: center;
     top:5rem;
 }
+
+.button-container {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+.button-container button {
+    margin: .5rem;
+}
+
