@@ -1,4 +1,4 @@
-export default function buildPetLi(thisPet) {
+export function buildPetLi(thisPet) {
     const PetLi = document.createElement('li');
     PetLi.classList.add('pet-listing');
 

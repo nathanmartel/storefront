@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../common/main.css">
+    <link rel="stylesheet" type="text/css" href="../common/cart.css">
+    <title>Lesser Pet Shop</title>
+</head>
+
+<body>
+    <header>
+        <h1>Lesser Pet Shop – Cart</h1>
+    </header>
+    <main>
+        <div id="main-content">
+            <div id="cart-content">
+                <table id="cart">
+                    <thead>
+                        <tr>
+                            <th class="left full-width">Item</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-body">
+<!--  Static Cart
+                        <tr>
+                            <td class="left">Goldfish</td>
+                            <td>3</td>
+                            <td>$5.00</td>
+                            <td>$15.00</td>
+                        </tr>
+                        <tr>
+                            <td class="left">Ant farm</td>
+                            <td>1</td>
+                            <td>$28.00</td>
+                            <td>$28.00</td>
+                        </tr>
+                    </tbody>
+ -->
+                    <tfoot>
+                        <tr>
+                            <td class="left">Total</td>
+                            <td></td>
+                            <td></td>
+                            <td class="bold" id="cart-total">$43.00</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <button id="place-order">Place Order</button>
+    </main>
+    <footer>
+        &copy;2020 Lesser Pet Shop
+    </footer>
+
+    <script type="module" src="../src/shoppingCart.js"></script>
+</body>
+
+</html>
