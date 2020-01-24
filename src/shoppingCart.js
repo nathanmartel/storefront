@@ -1,22 +1,22 @@
 import { lesserPets } from '../data/lesserPets.js';
 import { renderLineItem } from './renderLineItem.js';
 import { calcOrderTotal } from './utils.js';
-import { fetchCart } from './buildPetLi.js';
+import { getCart } from './buildPetLi.js';
 
 const buttonContainer = document.querySelector('.button-container');
 const buyButton = document.getElementById('place-order-button');
-const emptyCartButton = document.getElementById('empty-cart-button');    
+const clearCartButton = document.getElementById('empty-cart-button');    
 
 // Add event listeners
 buyButton.addEventListener('click', purchaseAlert);
-emptyCartButton.addEventListener('click', emptyCart);
+clearCartButton.addEventListener('click', clearCart);
 window.addEventListener('storage', () => console.log('Storage change!'));
 
 // Misc. functions
 function renderCart() {
     const cart = document.getElementById('cart-body');
     const cartTotal = document.getElementById('cart-total');
-    const petsInCart = fetchCart();
+    const petsInCart = getCart();
     
     // Clear HTML before rendering cart
     cart.innerHTML = '';
@@ -35,15 +35,15 @@ function renderCart() {
     if (petsInCart.length === 0) { buttonContainer.style.display = 'none'; }    
 }
 
-function emptyCart() {
+function clearCart() {
     localStorage.removeItem('cart');
     renderCart();
 }
 
 function purchaseAlert() {
-    const myCart = fetchCart();
+    const myCart = getCart();
     alert(JSON.stringify(myCart, true, 2));
-    emptyCart();
+    clearCart();
     window.location.href = "/";
 }
 

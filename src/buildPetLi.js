@@ -39,11 +39,9 @@ export function buildPetLi(thisPet) {
     petLiButton.textContent = 'Add';
     petLiButton.addEventListener('click', () => {
 
-        window.addEventListener('storage', () => console.log('Storage change!'));
-
         const petId = thisPet.id;
         console.log(`Adding ${petId} to cart`);
-        const myCart = fetchCart();
+        const myCart = getCart();
         const myNewOrder = findById(petId, myCart);
         if (myNewOrder) {
             myNewOrder.qty += 1;
@@ -65,7 +63,7 @@ export function buildPetLi(thisPet) {
     return petLi;
 }
 
-export function fetchCart() {
+export function getCart() {
     const myCart = localStorage.getItem('cart');
     console.log('Cart contains:', myCart);  
     if (!myCart) {
@@ -82,7 +80,3 @@ export function saveCart(myCart) {
     localStorage.setItem('cart', myCartString);
     console.log(localStorage);
 }
-
-
-function addToCart(petId) {
-} 

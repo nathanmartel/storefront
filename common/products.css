@@ -1,14 +1,32 @@
 /* products.css */
 
-/* Convert this to Flex */
+.flex {
+    display: flex;
+}
+
+#store-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 li.pet-listing { 
     list-style-type: none;
     border: 1px solid #ccc;
     width: 300px;
-    display:inline-block;
     margin-right: 2rem;
     margin-bottom: 2rem;
+    align-items: 
 }
+
+.pet-listing .image-container { 
+    height: 200px;
+    background: #eee;
+    overflow: hidden;
+}
+
 
 .pet-listing .text-container { 
     padding: 15px;
