@@ -1,4 +1,4 @@
-import { findById } from './utils.js';
+import { addToCart } from './cart-api.js';
 
 export function buildPetLi(thisPet) {
     const petLi = document.createElement('li');
@@ -37,46 +37,11 @@ export function buildPetLi(thisPet) {
     const petLiButton = document.createElement('button');
     petLiButton.value = thisPet.id;
     petLiButton.textContent = 'Add';
-    petLiButton.addEventListener('click', () => {
-
-        const petId = thisPet.id;
-        console.log(`Adding ${petId} to cart`);
-        const myCart = getCart();
-        const myNewOrder = findById(petId, myCart);
-        if (myNewOrder) {
-            myNewOrder.qty += 1;
-            saveCart(myCart);
-        } else {
-            const newPetInCart = {
-                id : petId,
-                qty : 1
-            };
-            myCart.push(newPetInCart);
-            saveCart(myCart);
-        }
-    });
+    petLiButton.addEventListener('click', () => { addToCart(thisPet.id); });
     
     petLiDiv.appendChild(petLiButton);
 
     petLi.appendChild(petLiDiv);
 
     return petLi;
-}
-
-export function getCart() {
-    const myCart = localStorage.getItem('cart');
-    console.log('Cart contains:', myCart);  
-    if (!myCart) {
-        const myEmptyCart = [];
-        return myEmptyCart;
-    } else {
-        const myCartWithStuff = JSON.parse(myCart);
-        return myCartWithStuff;
-    }
-}
-
-export function saveCart(myCart) {
-    const myCartString = JSON.stringify(myCart);
-    localStorage.setItem('cart', myCartString);
-    console.log(localStorage);
 }

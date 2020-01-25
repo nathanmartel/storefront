@@ -15,10 +15,11 @@
 li.pet-listing { 
     list-style-type: none;
     border: 1px solid #ccc;
-    width: 300px;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-    align-items: 
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: calc(25% - 1rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 
 .pet-listing .image-container { 
@@ -47,4 +48,5 @@ li.pet-listing {
 
 li img {
     width: 100%;
+    min-height: 200px;
 }
