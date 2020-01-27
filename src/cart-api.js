@@ -1,7 +1,6 @@
-import { lesserPets } from '../data/lesserPets.js';
-import { findById } from './utils.js';
+import { findById, calcOrderTotal } from './utils.js';
 import { renderLineItem } from './renderLineItem.js';
-import { calcOrderTotal } from './utils.js';
+import { getProducts } from './products-api.js';
 
 export function getCart() {
     const myCart = localStorage.getItem('cart');
@@ -53,6 +52,7 @@ export function renderCart() {
     const cart = document.getElementById('cart-body');
     const cartTotal = document.getElementById('cart-total');
     const buttonContainer = document.querySelector('.button-container');
+    const lesserPets = getProducts();
     const petsInCart = getCart();
     
     // Clear HTML before rendering cart
@@ -70,9 +70,4 @@ export function renderCart() {
     buttonContainer.style.display = 'flex';
 
     if (petsInCart.length === 0) { buttonContainer.style.display = 'none'; }    
-}
-
-export function addProduct(newProduct) {
-    lesserPets.push(newProduct);
-    console.log('lesserPets is now: ', lesserPets);
 }

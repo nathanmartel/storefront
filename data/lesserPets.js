@@ -61,4 +61,6 @@ const gecko = {
     price : 30,
 };
 
-export const lesserPets = [goldfish, hermitCrab, garterSnake, antFarm, hamster, gerbil, gecko];
+const lesserPets = [goldfish, hermitCrab, garterSnake, antFarm, hamster, gerbil, gecko];
+
+export default lesserPets;

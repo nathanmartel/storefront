@@ -1,17 +1,13 @@
-// Import data
-import { lesserPets } from '../data/lesserPets.js';
-
 // Import functions
 import { buildPetLi } from '../src/buildPetLi.js';
-import { findById } from '../src/utils.js';
-import { calcLineItem } from '../src/utils.js';
-import { calcOrderTotal } from '../src/utils.js';
+import { findById, calcLineItem, calcOrderTotal } from '../src/utils.js';
 import { renderLineItem } from '../src/renderLineItem.js';
-import { addProduct } from '../src/cart-api.js';
+import { addProduct, getProducts } from '../src/products-api.js';
 
 const test = QUnit.test;
 
 test('Does dynamic pet match static pet?', function(assert) {
+    const lesserPets = getProducts();
     const actualResult = buildPetLi(lesserPets[0]).outerHTML;
     const expectedResult = `<li class="pet-listing"><div class="image-container"><img src="../assets/goldfish.jpg" alt="A Goldfish photo"></div><div class="text-container"><h3>Goldfish</h3><p class="description">One of the most commonly kept aquarium fish.</p><p class="category">Fish</p><p class="price">$1.00</p><button value="goldfish">Add</button></div></li>`;
 
@@ -19,12 +15,14 @@ test('Does dynamic pet match static pet?', function(assert) {
 });
 
 test('Does findbyId return goldfish?', function(assert) {
+    const lesserPets = getProducts();
     const actualResult = findById('goldfish', lesserPets);
     const expectedResult = lesserPets[0];
     assert.equal(expectedResult, actualResult);
 });
 
 test('Does findbyId return gecko? ', function(assert) {
+    const lesserPets = getProducts();
     const actualResult = findById('gecko', lesserPets);
     const expectedResult = lesserPets[6];
     assert.equal(expectedResult, actualResult);
@@ -49,6 +47,7 @@ test('Does calcLineItem round properly if a long result is produced? ', function
 });
 
 test('Does renderLineItem output properly? ', function(assert) {
+    const lesserPets = getProducts();
     const myOrder = { id : 'goldfish', qty: 3 };
     const actualResult = renderLineItem(myOrder, lesserPets).outerHTML;
     const expectedResult = `<tr><td class="left">Goldfish</td><td>3</td><td>$1.00</td><td>$3.00</td></tr>`;
@@ -56,6 +55,7 @@ test('Does renderLineItem output properly? ', function(assert) {
 });
 
 test('Does calcOrderTotal add up properly? ', function(assert) {
+    const lesserPets = getProducts();
     const myOrder = [{ 
         id : 'goldfish',
         qty : 3,
@@ -72,6 +72,7 @@ test('Does calcOrderTotal add up properly? ', function(assert) {
 });
 
 test('Does calcOrderTotal add up properly with decimals? ', function(assert) {
+    const lesserPets = getProducts();
     const myOrder = [{ 
         id : 'goldfish',
         qty : 3,
@@ -100,8 +101,9 @@ test('Does addProduct match the last item in the products array?', function(asse
         description : `See monkeys? No, sea monkeys!`,
         category : 'Crustacean',
         price : 1.25,
-        };
+    };
     addProduct(expectedResult);
-    const actualResult = lesserPets[lesserPets.length - 1]
-    assert.equal(expectedResult, actualResult);
+    const lesserPets = getProducts();
+    const actualResult = lesserPets[lesserPets.length - 1];
+    assert.deepEqual(actualResult, expectedResult);
 });

@@ -1,11 +1,12 @@
-import { lesserPets } from '../data/lesserPets.js';
+import { getProducts } from './products-api.js';
 import { buildPetLi } from './buildPetLi.js';
 
 // Run on load
 const petUl = document.getElementById('store-content');
 
-for (let i = 0; i < lesserPets.length; i++) {
-    const singlePet = lesserPets[i];
+const lesserPets = getProducts();
+
+lesserPets.forEach((singlePet) => {
     const petLi = buildPetLi(singlePet);
     petUl.appendChild(petLi);
-}
+});

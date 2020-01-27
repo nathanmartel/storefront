@@ -1,5 +1,4 @@
-import { addProduct } from './cart-api.js';
-import { buildPetLi } from './buildPetLi.js';
+import { addProduct, showNewProduct, showAllProductsForRemoval } from './products-api.js';
 
 const newProductForm = document.getElementById('product-entry-form');
 
@@ -20,14 +19,6 @@ newProductForm.addEventListener('submit', (e) => {
 
 });
 
-function showNewProduct(myNewPet) {
-    const newProductDiv = document.getElementById('new-product-gallery');
-    const petUl = document.getElementById('store-content');
 
-    if (newProductDiv.classList.contains('hidden')) {
-        newProductDiv.classList.remove('hidden');
-    }
-
-    const petLi = buildPetLi(myNewPet);
-    petUl.appendChild(petLi);
-}
+// Run on load
+showAllProductsForRemoval();
