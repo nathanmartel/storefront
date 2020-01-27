@@ -1,0 +1,41 @@
+h2 {
+    text-align: center;
+}
+
+/* Use Grid instead? */
+#product-entry {
+    width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+}
+
+.field-container {
+    width: 350px;
+}
+
+.field-container label {
+    text-align: right;
+    height: 1.5rem;
+    margin: 5px;
+    width: 100px;
+    display: inline-block;
+}
+
+.field-container input {
+    width: 200px;
+    height: 1.5rem;
+    margin: 5px;
+}
+
+#product-entry-button {
+    margin: 20px auto;
+    display: block;
+}
+
+#new-product-gallery {
+    background-color: #eee;
+    padding: 5rem;
+}

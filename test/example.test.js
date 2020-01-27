@@ -7,6 +7,7 @@ import { findById } from '../src/utils.js';
 import { calcLineItem } from '../src/utils.js';
 import { calcOrderTotal } from '../src/utils.js';
 import { renderLineItem } from '../src/renderLineItem.js';
+import { addProduct } from '../src/cart-api.js';
 
 const test = QUnit.test;
 
@@ -88,5 +89,19 @@ test('Does calcOrderTotal add up properly with decimals? ', function(assert) {
     }];
     const actualResult = calcOrderTotal(myOrder, lesserPets);
     const expectedResult = 150.5;
+    assert.equal(expectedResult, actualResult);
+});
+
+test('Does addProduct match the last item in the products array?', function(assert) {
+    const expectedResult = { 
+        id : 'seaMonkeys',
+        name : 'Sea Monkeys',
+        image : 'seamonkeys.jpg',
+        description : `See monkeys? No, sea monkeys!`,
+        category : 'Crustacean',
+        price : 1.25,
+        };
+    addProduct(expectedResult);
+    const actualResult = lesserPets[lesserPets.length - 1]
     assert.equal(expectedResult, actualResult);
 });

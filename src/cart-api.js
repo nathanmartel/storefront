@@ -71,3 +71,8 @@ export function renderCart() {
 
     if (petsInCart.length === 0) { buttonContainer.style.display = 'none'; }    
 }
+
+export function addProduct(newProduct) {
+    lesserPets.push(newProduct);
+    console.log('lesserPets is now: ', lesserPets);
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../common/main.css">
+    <link rel="stylesheet" type="text/css" href="../common/products.css">
+    <link rel="stylesheet" type="text/css" href="../common/product-entry.css">
+    <title>Lesser Pet Shop</title>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">Lesser Pet Shop</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/product-entry">Product Entry</a></li>
+                <li><a href="/shopping-cart">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="main-content">
+            <h2>Add a New Product</h2>
+            <div id="product-entry">
+                <form id="product-entry-form" action="#" method="get" >
+                    <div class="field-container">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" />
+                        <br />
+                        <label for="id">ID:</label>
+                        <input type="text" name="id" />
+                        <br />
+                        <label for="image">Image:</label>
+                        <input type="text" name="image" />
+                        <br />
+                        <label for="description">Description:</label>
+                        <input type="text" name="description" />
+                        <br />
+                        <label for="category">Category:</label>
+                        <input type="text" name="category" />
+                        <br />
+                        <label for="price">Price:</label>
+                        <input type="text" name="price" />
+                    </div>
+                    <button type="submit" id="product-entry-button">Add to Products</button>
+                </form>
+            </div>
+            <div id="new-product-gallery" class="hidden">
+                <h3>Newly Added Products</h3>
+                <ul id="store-content">
+                </ul>   
+            </div>
+        </div>
+    </main>
+    <footer>
+        &copy;2020 Lesser Pet Shop
+    </footer>
+
+    <script type="module" src="../src/product-entry.js"></script>
+</body>
+
+</html>
