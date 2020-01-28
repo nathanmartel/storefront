@@ -4,7 +4,7 @@ const goldfish = {
     image : 'goldfish.jpg',
     description : `One of the most commonly kept aquarium fish.`,
     category : 'Fish',
-    price : 5,
+    price : 1,
 };
 
 const hermitCrab = {
@@ -13,7 +13,7 @@ const hermitCrab = {
     image : 'hermit-crab.jpg',
     description : `Hermit crabs are active and curious.`,
     category : 'Crustacean',
-    price : 8,
+    price : 8.33,
 };
 
 const garterSnake = {
@@ -22,7 +22,7 @@ const garterSnake = {
     image : 'garter-snake.jpg',
     description : `Hermit crabs are active and curious.`,
     category : 'Reptile',
-    price : 8,
+    price : 25,
 };
 
 const antFarm = {
@@ -49,7 +49,7 @@ const gerbil = {
     image : 'gerbil.jpg',
     description : `Gerbils need more room than hamsters and live longer.`,
     category : 'Rodent',
-    price : 25,
+    price : 7.50,
 };
 
 const gecko = {
@@ -58,7 +58,7 @@ const gecko = {
     image : 'gecko.jpg',
     description : `Geckos are small lizards that can't blink, so they lick their eyes!.`,
     category : 'Reptile',
-    price : 45,
+    price : 30,
 };
 
 export const lesserPets = [goldfish, hermitCrab, garterSnake, antFarm, hamster, gerbil, gecko];

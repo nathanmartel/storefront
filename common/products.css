@@ -1,14 +1,33 @@
 /* products.css */
 
-/* Convert this to Flex */
+.flex {
+    display: flex;
+}
+
+#store-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 li.pet-listing { 
     list-style-type: none;
     border: 1px solid #ccc;
-    width: 300px;
-    display:inline-block;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+    flex-grow: 0;
+    flex-shrink: 1;
+    width: calc(25% - 1rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 }
+
+.pet-listing .image-container { 
+    height: 200px;
+    background: #eee;
+    overflow: hidden;
+}
+
 
 .pet-listing .text-container { 
     padding: 15px;
@@ -29,4 +48,5 @@ li.pet-listing {
 
 li img {
     width: 100%;
+    min-height: 200px;
 }

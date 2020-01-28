@@ -1,16 +1,12 @@
-import { lesserPets } from '../data/lesserPets.js';
-import { petsInCart } from '../data/cart.js';
-import { renderLineItem } from './renderLineItem.js';
-import { calcOrderTotal } from './utils.js';
+import { clearCart, purchaseCart, renderCart } from './cart-api.js';
 
-const cart = document.getElementById('cart-body');
-const cartTotal = document.getElementById('cart-total');
+// Get DOM
+const buyButton = document.getElementById('place-order-button');
+const clearCartButton = document.getElementById('empty-cart-button');    
 
-petsInCart.forEach((thisPet) => {
-    const newRow = renderLineItem(thisPet, lesserPets);
-    cart.appendChild(newRow);
-});
+// Add event listeners
+buyButton.addEventListener('click', purchaseCart);
+clearCartButton.addEventListener('click', clearCart);
 
-let rawOrderTotal = calcOrderTotal(petsInCart, lesserPets);
-rawOrderTotal = Math.round(rawOrderTotal * 100) / 100;
-cartTotal.textContent = `$${rawOrderTotal.toFixed(2)}`;
+// Run on load
+renderCart();
